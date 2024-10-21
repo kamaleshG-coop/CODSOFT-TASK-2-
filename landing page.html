@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis of Tomato Leaf Diseases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scrollbars */
+        }
+
+        header {
+            background: rgba(180, 243, 180, 0.9);
+            color: rgb(129, 57, 57);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero {
+            background: rgba(236, 211, 211, 0.8);
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: slideIn 1s ease-in-out forwards;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature {
+            background: #a4c595;
+            border: 1px solid #f19f9f;
+            border-radius: 5px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: scale(0);
+            animation: popUp 0.6s forwards; /* Pop-up effect */
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.3s; }
+        .feature:nth-child(2) { animation-delay: 0.5s; }
+        .feature:nth-child(3) { animation-delay: 0.7s; }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(203, 243, 204, 0.9);
+            color: rgb(91, 92, 187);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .contact-form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #f1a1a1;
+            border-radius: 5px;
+            background: rgba(199, 147, 147, 0.8);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px); /* Initial offset for animation */
+            animation: fadeInUp 0.6s forwards; /* Fade in and slide up */
+            animation-delay: 0.3s; /* Delay for contact form */
+        }
+
+        .cta-button {
+            background: #69da80;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: bounce 1s infinite; /* Button bounce animation */
+        }
+
+        /* Animation Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, #c8e6c9, #a5d6a7);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="background"><img src="./image 2.jpg" height="1000"></div>
+
+<header>
+    <h1>Diagnosis of Tomato Leaf Diseases</h1>
+    <p>Using K-Means Clustering and Machine Learning</p>
+</header>
+
+<section class="hero">
+    <h2>Revolutionizing Agriculture with Technology</h2>
+    <p>Efficiently diagnose and classify tomato leaf diseases to enhance crop health and yield.</p>
+    <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView();">Get Started</button>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h3>Accurate Diagnosis</h3>
+        <p>Achieve a classification accuracy of 98.97% using advanced image processing algorithms.</p>
+    </div>
+    <div class="feature">
+        <h3>Efficient Processing</h3>
+        <p>Reduce processing time significantly compared to deep learning models like CNN and GoogleNet.</p>
+    </div>
+    <div class="feature">
+        <h3>User-Friendly Interface</h3>
+        <p>Seamless integration with web applications for easy access and user interaction.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form" onsubmit="return sendMessage();">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        <button type="submit" class="cta-button">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 Diagnosis of Tomato Leaf Diseases Project. All rights reserved.</p>
+</footer>
+
+<script>
+    function sendMessage() {
+        // Get the form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Simulate sending the message (you can replace this with actual functionality)
+        alert(`Message sent!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
+
+        // Optionally reset the form
+        document.querySelector('.contact-form').reset();
+
+        // Prevent the default form submission
+        return false;
+    }
+</script>
+
+</body>
+</html>
